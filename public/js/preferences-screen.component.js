@@ -1,3 +1,6 @@
+const electron = require('electron');
+const dialog = electron.remote.dialog;
+
 module.exports.preferencesScreenComponent = {
 	bindings: {
 		onClose: '&',

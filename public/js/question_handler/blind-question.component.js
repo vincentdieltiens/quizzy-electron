@@ -2,6 +2,7 @@ module.exports.BlindQuestionComponent = {
 	bindings: {
 		question: '=',
 		preloaded: '&',
+		onerror: '&',
 		setCtrl: '&'
 		//game: '='
 	},
@@ -65,6 +66,9 @@ module.exports.BlindQuestionComponent = {
 			html: 5,
 			onload: () => {
 				$ctrl.preloaded();
+			},
+			onloaderror: (e) => {
+				$ctrl.onerror();
 			}
 		});
 

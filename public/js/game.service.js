@@ -263,6 +263,7 @@ module.exports.Game = class Game {
 		}
 
 		if (this.isGame()) {
+			console.log('MAKE IT NOW !')
 			this.makeQuestionComponent(question.question).then((componentInfos) => {
 				console.log(this.type+ ' -- makeQuestionComponent ', componentInfos)
 				question.ctrl = componentInfos.ctrl;
@@ -283,6 +284,7 @@ module.exports.Game = class Game {
 				this.question.ctrl.unload();
 			}
 
+			console.log('switch question')
 			this.question = this.nextQuestion;
 			this.nextQuestion = null;
 			this.currentQuestionIndex += 1;
@@ -290,8 +292,16 @@ module.exports.Game = class Game {
 		
 
 		if (this.isGame()) {
-		
-			this.question.attachComponent();
+			
+			if (data.state != 'continue') {
+				
+				if (!this.question.attachComponent) {
+					this.getQuestion(this.currentQuestionIndex);
+					return;
+				}
+				this.question.attachComponent();
+			}
+			
 			this.question.ctrl.play();
 
 			// load next...

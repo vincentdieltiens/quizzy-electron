@@ -527,6 +527,26 @@ scores-screen {
 	-webkit-animation-play-state: paused;
 }
 
+.blur-image {
+	-webkit-transition: none;
+	transition: none;
+
+	animation-duration: 14s;
+	animation-name: progressbar;
+	animation-timing-function: linear;
+	animation-iteration-count: 1;
+
+    -webkit-animation-duration: 14s;
+	-webkit-animation-name: blur;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: 1;
+}
+
+.blur-image.paused {
+	-webkit-animation-play-state:paused;
+    animation-play-state:paused;
+}
+
 @-webkit-keyframes flash-animation {  
     from { background: white; }
     to   { background: default; }
@@ -540,4 +560,14 @@ scores-screen {
 @-webkit-keyframes progressbar {
     from { width: 0%; }
     to { width: 100%; }
+}
+
+@keyframes blur {
+    from { filter: blur(20px); }
+    to { filter: blur(0px); }
+}
+
+@-webkit-keyframes blur {
+    from { -webkit-filter: blur(20px); }
+    to { -webkit-filter: blur(0px); }
 }

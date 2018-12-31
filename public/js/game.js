@@ -9,6 +9,7 @@ const { questionScreenComponent } = require('./question-screen.component');
 const { scoresScreenComponent } = require('./scores-screen.component');
 const { teamsComponent } = require('./teams.component');
 const { BlindQuestionComponent } = require('./question_handler/blind-question.component');
+const { BlurQuestionComponent } = require('./question_handler/blur-question.component');
 const { DeafQuestionComponent } = require('./question_handler/deaf-question.component');
 
 angular.module('game', ['sounds'])
@@ -23,5 +24,6 @@ angular.module('game', ['sounds'])
 	.component('teams', teamsComponent)
 	.component('progressBar', progressBarComponent)
 	.component('blindQuestion', BlindQuestionComponent)
+	.component('blurQuestion', BlurQuestionComponent)
 	.component('deafQuestion', DeafQuestionComponent)
 ;

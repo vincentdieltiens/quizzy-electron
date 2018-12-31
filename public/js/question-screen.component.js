@@ -15,14 +15,25 @@ module.exports.questionScreenComponent = {
 			subScope.question = question;
 
 			subScope.preloaded = (fn) => {
+				console.log('preloaded !')
 				deferred.resolve({ ctrl: ctrl, attachComponent: attach});
 			}
 			subScope.setCtrl = (_ctrl) => {
 				ctrl = _ctrl;
 			}
+			subScope.onerror = (fn) => {
+				console.log('ERROOOOR');
+				deferred.resolve({ ctrl: {
+					play: () => {},
+					stop: () => {},
+					pause: () => {},
+					unload: () => {}
+				}, attachComponent: () => {}})
+			}
 
 			let componentName = question.type+'-question';
-			let tpl = '<'+componentName+' question="question" preloaded="preloaded(fn)" set-ctrl="setCtrl(ctrl)"></'+componentName+'>'
+			console.log('componentName : ', componentName)
+			let tpl = '<'+componentName+' question="question" preloaded="preloaded(fn)" onerror="onerror(e)" set-ctrl="setCtrl(ctrl)"></'+componentName+'>'
 			let component = $compile(tpl)(subScope);
 
 			//console.log('component : ', component);

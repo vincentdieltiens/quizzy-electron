@@ -36,13 +36,13 @@ module.exports.DeafQuestionComponent = {
 
 		// Preload mp3 file and call preloaded when it's done !
 		let i = (Math.floor(Math.random() * 12) + 1);
-		console.log('i => ', i)
+		//console.log('i => ', i)
 		let howl = new Howl({
 			src: __dirname + '/../../sounds/image_background_0'+i+'.mp3',
 			preload: true,
 			html: 5,
 			onload: () => {
-
+				console.log('ici 10000000000');
 				var img = new Image();
 				img.onload = function() {
 					$ctrl.preloaded();
