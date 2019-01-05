@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "../../dist/electron",
+    "strict": false,
+    "esModuleInterop": true
+  }
+}
