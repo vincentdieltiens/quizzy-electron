@@ -27,6 +27,7 @@
               "src/assets"
             ],
             "styles": [
+             "src/theme.scss",
               "src/styles.less",
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
             ],
@@ -132,7 +133,9 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+             
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+              "src/theme.scss",
               "src/styles.less",
             ],
             "scripts": [],

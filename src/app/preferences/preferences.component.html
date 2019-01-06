@@ -2,18 +2,27 @@
 	Preferences
 </header>
 <div>
-	<form [formGroup]="preferencesForm">
-		<h2>Server</h2>
+	<mat-tab-group>
+		<mat-tab label="Options">
+			<form [formGroup]="preferencesForm">
+				<h2>Server</h2>
 
-		<div class="form-group">
-			<label for="websocketPort">Websocket port</label>
-			<div class="form-group">
-				<input type="number" 
-				       formControlName="port"
-				       class="form-control" />
-			</div>
-		</div>
-	</form>
+				<div class="form-group">
+					<label for="websocketPort">Websocket port</label>
+					<div class="form-group">
+						<input type="number" formControlName="port" class="form-control" />
+					</div>
+				</div>
+			</form>
+		</mat-tab>
+		<mat-tab label="Files database">
+
+			<app-questions-table></app-questions-table>
+			
+		</mat-tab>
+	</mat-tab-group>
+
+
 </div>
 <footer>
 	<button class="btn btn-default" (click)="cancel()">Annuler</button>
