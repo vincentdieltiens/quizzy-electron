@@ -1,0 +1,21 @@
+<header>
+	Preferences
+</header>
+<div>
+	<form [formGroup]="preferencesForm">
+		<h2>Server</h2>
+
+		<div class="form-group">
+			<label for="websocketPort">Websocket port</label>
+			<div class="form-group">
+				<input type="number" 
+				       formControlName="port"
+				       class="form-control" />
+			</div>
+		</div>
+	</form>
+</div>
+<footer>
+	<button class="btn btn-default" (click)="cancel()">Annuler</button>
+	<button class="btn btn-success" (click)="save()">Valider</button>
+</footer>
