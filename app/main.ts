@@ -42,7 +42,6 @@ function createGameWindow(): BrowserWindow {
 		});
 		gameWindow.loadURL('http://localhost:4567');
 	} else {
-		console.log('la');
 		// Path when running electron executable
 		let pathIndex = './index.html';
 
@@ -124,10 +123,14 @@ function createMasterWindow(): BrowserWindow {
 		}
 	});
 
+	// Sometimes, the game need to know the state of the buzzer, then it will send the `getBuzzerState` event
+	// and will wait for a `buzzerdConnected` event
 	ipcMain.on('getBuzzerState', (event, args) => {
 		masterWindow.webContents.send('buzzerConnected', buzzer !== null);
 	});
 
+	// When the master want to update the state of the game, it will send the `updateState` event
+	// That event is propagated to the game
 	ipcMain.on('updateState', (event, args) => {
 		console.log('update state');
 		gameWindow.webContents.send('updateState', args);
@@ -145,6 +148,7 @@ function createMasterWindow(): BrowserWindow {
 }
 
 function initBuzzer() {
+	// All buzzer events are sent to the master
 	console.log('Init buzzer');
 	const _buzzer = new Buzzer();
 	_buzzer.connect().catch(err => {
