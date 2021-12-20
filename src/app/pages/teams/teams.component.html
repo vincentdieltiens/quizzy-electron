@@ -1,0 +1,23 @@
+<div class="teams">
+    <div class="team"
+         [class.active]="team.active"
+         *ngFor="let team of quizzy.getState().teams; let i=index">
+        <img [src]="'/assets/img/' + team.image" />
+        <div (click)="openNameBox(i)">{{ team.name }}</div>
+    </div>
+</div>
+<div class="actions" *ngIf="quizzy.isMaster()">
+    <button class="btn btn-primary" (click)="quizzy.getMaster().startFirstRound()">Start</button>
+</div>
+<div class="name-form"
+     *ngIf="teamBox && quizzy.isMaster()">
+    <div class="content">
+        <h2>Team Name</h2>
+        <form (submit)="setTeamName()">
+            <input type="text"
+                   name="name"
+                   [(ngModel)]="name" />
+            <button class="btn btn-primary">Validate</button>
+        </form>
+    </div>
+</div>

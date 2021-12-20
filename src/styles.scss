@@ -1,7 +1,88 @@
-body, html {
+body,
+html {
   background-color: #4e0e4b;
   width: 100%;
   height: 100%;
   padding: 0;
   margin: 0;
+  overflow: hidden;
+  font-family: 'Roboto';
+}
+
+.btn.btn-primary {
+  padding: 10px;
+  border-radius: 10%;
+  color: #000;
+  background-color: #ffce33;
+  padding: 20px 60px;
+  border-radius: 30px;
+  margin: 20px;
+  font-size: 20px;
+  background-image: linear-gradient(0deg, #bd9100 0%, #ffce33 100%);
+  font-family: Roboto;
+  color: #000;
+  border: 3px solid #b21568;
+
+  &:hover {
+    background-image: linear-gradient(0deg, #f5bc02 50%, #ffce33 100%);
+    color: #000;
+  }
+}
+
+input[type=text] {
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 10px;
+  border: 2px solid #b21568;
+}
+
+img {
+  z-index: 1;
+}
+
+.bg-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+}
+
+.bg {
+  position: absolute;
+  transform: rotate(360deg);
+  top: -50%;
+  z-index: 0;
+  width: 200%;
+  height: 200%;
+  background-image:
+    repeating-conic-gradient(from 0 at 50% 50%, rgba(78, 14, 75, 0) 0 9deg, hsla(303, 42%, 38%, 0.1) 0 18deg);
+
+  animation-name: rotate;
+  animation-duration: 80s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.container {
+  overflow: hidden;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(359);
+  }
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('/assets/fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto Black';
+  src: url('/assets/fonts/Roboto/Roboto-Black.ttf') format('truetype');
 }

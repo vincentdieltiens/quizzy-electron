@@ -9,7 +9,10 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './pages/home/home.component';
+import { TeamsComponent } from './pages/teams/teams.component';
+import { RoundsComponent } from './pages/rounds/rounds.component';
+import { Top9Component } from './pages/top9/top9.component';
 
 // AoT requires an exported function for factories
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -17,7 +20,10 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    TeamsComponent,
+    RoundsComponent,
+    Top9Component
   ],
   imports: [
     BrowserModule,

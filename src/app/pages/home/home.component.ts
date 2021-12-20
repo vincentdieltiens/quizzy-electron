@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { GameService } from '../services/game.service';
+import { QuizzyService } from '../../services/quizzy.service';
 
 @Component({
 	selector: 'app-home',
@@ -11,14 +11,10 @@ export class HomeComponent implements OnInit {
 
 	constructor(
 		private router: Router,
-		public gameService: GameService
+		public quizzy: QuizzyService
 	) { }
 
 	ngOnInit(): void {
-	}
-
-	test() {
-		console.log('test');
 	}
 
 }

@@ -1,0 +1,79 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 100;
+}
+
+.teams {
+    display: flex;
+    align-self: center;
+
+    .team {
+        width: 200px;
+        padding: 20px;
+        background-color: rgb(255, 255, 255, 0.5);
+        border-radius: 40px;
+        margin: 20px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        font-size: 30px;
+
+        img {
+            align-self: center;
+            max-width: 100px;
+        }
+
+        &:after {
+            display: block;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            top: 0;
+            left: 0;
+            z-index: 10;
+            border-radius: 40px;
+            pointer-events: none;
+        }
+
+        &.active {
+            &:after {
+                background: rgba(0, 0, 0, 0);
+            }
+        }
+    }
+}
+
+.name-form {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    flex-direction: column;
+    z-index: 20;
+
+    .content {
+        align-self: center;
+        background: #ffce33;
+        padding: 20px;
+        border-radius: 20px;
+    }
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+}

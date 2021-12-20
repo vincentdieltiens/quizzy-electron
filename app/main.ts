@@ -159,7 +159,9 @@ function initBuzzer() {
 
 	_buzzer.addEventListener('ready', () => {
 		console.log('Buzzer ready');
-		_buzzer.lightOn(0);
+		for(var i=0; i < 4; i++) {
+			_buzzer.lightOff(i);
+		}
 		buzzer = _buzzer;
 		masterWindow.webContents.send('buzzerConnected', true);
 	});
@@ -175,6 +177,7 @@ function initBuzzer() {
 
 	_buzzer.addEventListener('press', (controllerIndex: number) => {
 		console.log('Buzzer press');
+		_buzzer.lightOn(controllerIndex);
 		masterWindow.webContents.send('buzzerPressed', controllerIndex);
 	});
 	console.log('Buzzer initalized');

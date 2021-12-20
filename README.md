@@ -46,5 +46,14 @@ It is also the master that receives the buzzer status and buzzer events (buzzer 
 
 The communication between the master and the game is done using Electron's `ipcMain` and `ipcRenderer` events.
 
+### Run the game is development mode
 
+```
+npm run start
+```
 
+It will create two servers :
+- one on port 4567 for game
+- one on port 4568 for master
+
+Then it will
