@@ -15,8 +15,18 @@ export class RoundsComponent implements OnInit {
 	) { }
 
 	ngOnInit(): void {
-		//this.round = this.gameService.getMaster().getCurrentRound();
-		//console.log('ROUNDS : ', this.round);
+
+		if (this.quizzy.getService().roundsLoaded()) {
+			this.round = this.quizzy.getService().getCurrentRound();
+		}
+
+		this.quizzy.getService().stateChanged.subscribe(stateChange => {
+			if (stateChange.rounds) {
+				this.round = this.quizzy.getMaster().getCurrentRound();
+				console.log('ROUNDS : ', this.round);
+			}
+		});
+
 	}
 
 }

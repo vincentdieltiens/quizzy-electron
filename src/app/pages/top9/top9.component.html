@@ -1,1 +1,34 @@
-<p>top9 works!</p>
+<app-question [question]="question"></app-question>
+<div class="teams"
+	 [class.master]="quizzy.isMaster()">
+	<div [class]="'team team'+i"
+		 *ngFor="let team of quizzy.getService().getState().teams; let i=index"
+		 [class.active]="team.active">
+		<div class="team-icon">
+			<img [src]="'/assets/img/' + team.image" />
+		</div>
+		<div class="team-name"
+			 [class.buzzed]="team.buzzed"
+			 [class.blocked]="team.blocked">{{ team.name }}</div>
+		<div class="desk">
+
+			<app-desk-points class="points"
+							 [points]="round.points[i]"
+							 [teamName]="'team'+i">
+
+			</app-desk-points>
+		</div>
+		<div class="actions"
+			 *ngIf="quizzy.isMaster()">
+			<button class="btn btn-primary"
+					(click)="addPoint(i, -1)">-1</button>
+			<button class="btn btn-primary"
+					(click)="addPoint(i, 1)">+1</button>
+		</div>
+	</div>
+</div>
+<div class="next-question" *ngIf="quizzy.isMaster()">
+	<button class="btn btn-primary" (click)="wrongAnswer()">Wrong answer</button>
+	<button class="btn btn-primary" (click)="unblockAll()">Unblock all</button>
+	<button class="btn btn-primary" (click)="nextQuestion()">Next Question</button>
+</div>

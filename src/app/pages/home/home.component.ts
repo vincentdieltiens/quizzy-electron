@@ -17,4 +17,10 @@ export class HomeComponent implements OnInit {
 	ngOnInit(): void {
 	}
 
+	settings($event) {
+		$event.stopPropagation();
+		$event.preventDefault();
+		this.quizzy.getMaster().setState({ screen: 'settings' })
+	}
+
 }

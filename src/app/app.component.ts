@@ -14,7 +14,7 @@ export class AppComponent {
 		private electronService: ElectronService,
 		private translate: TranslateService,
 		private elementRef: ElementRef,
-		private quizzyService: QuizzyService,
+		public quizzy: QuizzyService,
 		private changeDetectorRef: ChangeDetectorRef
 	) {
 		this.translate.setDefaultLang('en');
@@ -26,9 +26,9 @@ export class AppComponent {
 			console.log('Electron ipcRenderer', this.electronService.ipcRenderer);
 			console.log('NodeJS childProcess', this.electronService.childProcess);*/
 			console.log('Type : ', this.elementRef.nativeElement.getAttribute('type'));
-			this.quizzyService.setType(this.elementRef.nativeElement.getAttribute('type'));
-			this.quizzyService.init();
-			this.quizzyService.setChangeDetectorRef(this.changeDetectorRef);
+			this.quizzy.setType(this.elementRef.nativeElement.getAttribute('type'));
+			this.quizzy.init();
+			this.quizzy.setChangeDetectorRef(this.changeDetectorRef);
 		} else {
 			//console.log('Run in browser');
 		}

@@ -1,0 +1,26 @@
+:host {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.question {
+    padding: 50px 150px;
+    font-size: 25px;
+    color: #fff;
+    background: #320030;
+    border: 1px solid #c49806;
+    position: absolute;
+    top: 80px;
+    left: 100px;
+    right: 100px;
+
+    > span {
+
+    }
+
+    .answer {
+        padding: 30px;
+        color: #999;
+    }
+}

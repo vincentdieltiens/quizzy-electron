@@ -43,12 +43,18 @@ class Buzzer {
 	constructor() {
 	}
 
-	connect(timeout/*: number*/ = 30000)/*: Promise<boolean>*/ {
+	/**
+	 * Connect the the buzzer
+	 * @param {*} timeout the time (in milliseconds) after which the connection will be rejected.
+	 * If timeout = 0, it will be never rejected
+	 * @returns A promise.
+	 */
+	connect(timeout/*: number*/ = 0)/*: Promise<boolean>*/ {
 		const startTime = new Date().getTime();
 		return new Promise((resolve, reject) => {
 			const interval = setInterval(() => {
 				const time = new Date().getTime();
-				if (time - startTime > timeout) {
+				if (timeout > 0 && time - startTime > timeout) {
 					clearInterval(interval);
 					reject(false);
 					return;
@@ -86,7 +92,6 @@ class Buzzer {
 	init() {
 		this.connected = true;
 		this.device.on("data", (signal) => {
-			console.log('signal : ', signal)
 			var controllerIndex = signal[0];
 			callHandlers(this.handlers['c' + controllerIndex], controllerIndex, 0);
 			callHandlers(this.handlers['all'], controllerIndex, 0);
@@ -99,7 +104,6 @@ class Buzzer {
 		});
 
 		this.device.on("close", () => {
-			console.log('close')
 			this.connected = false;
 			this.device = null;
 			this.eventListeners.leave.forEach(f => f());

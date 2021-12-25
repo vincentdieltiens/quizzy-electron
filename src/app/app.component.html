@@ -1,4 +1,4 @@
 <div class="bg-container">
     <div class="bg"></div>
 </div>
-<router-outlet></router-outlet>
+<router-outlet *ngIf="quizzy.isGame() || quizzy.getMaster().settings"></router-outlet>

@@ -1,0 +1,10 @@
+<div [class]="'points '+teamName">
+    <div class="point"
+         *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9]"
+         [class.active]="_points >= i"
+         [class.blink-add]="blinkAdd && _points > 0 && i == _points"
+         [class.blink-remove]="blinkRemove && _points > 0 && i == _points"
+         [class.blink-finished]="finished"
+         >
+    </div>
+</div>

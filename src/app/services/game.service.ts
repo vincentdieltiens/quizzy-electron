@@ -1,7 +1,8 @@
 import { ChangeDetectorRef, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { ElectronService } from '.';
-import { GameState } from '../game-state';
+import { GameState, updateState } from '../game-state';
 
 @Injectable({
 	providedIn: 'root'
@@ -11,6 +12,9 @@ export class GameService {
 	private state: GameState;
 
 	private changeDetectorRef: ChangeDetectorRef;
+
+	private _stateChanged = new BehaviorSubject<Partial<GameState>>({});
+	public stateChanged = this._stateChanged.asObservable();
 
 	constructor(
 		private electronService: ElectronService,
@@ -48,20 +52,45 @@ export class GameService {
 				this.router.navigateByUrl('/teams');
 				break;
 			case 'rounds':
-				this.router.navigateByUrl(`/rounds/${this.state.round}`);
+				this.router.navigateByUrl(`/rounds/${this.state.roundIndex}`);
 				break;
 		}
+	}
+
+	/************************************************************
+	 * 				ROUNDS
+	 ************************************************************/
+
+	 startFirstRound() {
+		this.setState({
+			screen: 'rounds',
+			round: 0
+		});
+	}
+
+	roundsLoaded() {
+		return this.state && this.state.rounds;
+	}
+
+	getCurrentRound() {
+		if (this.state.rounds && this.state.roundIndex !== null) {
+			return this.state.rounds[this.state.roundIndex];
+		}
+		return null;
 	}
 
 	/************************************************************
 	 * 				STATE
 	 ************************************************************/
 	setState(state: any) {
-		this.state = { ...this.state, ...state };
+
+		this.state = updateState(this.state || {}, state);
 
 		if (state.screen) {
 			this.loadScreen();
 		}
+
+		this._stateChanged.next(state);
 	}
 
 	getState() {

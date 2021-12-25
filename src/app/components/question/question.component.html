@@ -1,0 +1,6 @@
+<div class="question">
+	<span>{{ question?.text }}</span>
+	<div class="answer" *ngIf="quizzy.isMaster()">
+		<span>Réponse: {{ question?.answer }}</span>
+	</div>
+</div>

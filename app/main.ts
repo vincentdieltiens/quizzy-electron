@@ -136,6 +136,17 @@ function createMasterWindow(): BrowserWindow {
 		gameWindow.webContents.send('updateState', args);
 	});
 
+	ipcMain.on('buzzerLight', (event, args) => {
+		console.log('light ', args);
+		if (!buzzer) {
+			console.log('try to turn on buzzer but no buzzer connected');
+			return;
+		}
+		for(const [controllerIndex, on] of args.entries()) {
+			buzzer.light(controllerIndex, on);
+		}
+	});
+
 	// Emitted when the window is closed.
 	masterWindow.on('closed', () => {
 		// Dereference the window object, usually you would store window
@@ -177,7 +188,7 @@ function initBuzzer() {
 
 	_buzzer.addEventListener('press', (controllerIndex: number) => {
 		console.log('Buzzer press');
-		_buzzer.lightOn(controllerIndex);
+		//_buzzer.lightOn(controllerIndex);
 		masterWindow.webContents.send('buzzerPressed', controllerIndex);
 	});
 	console.log('Buzzer initalized');

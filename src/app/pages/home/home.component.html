@@ -1,11 +1,16 @@
 <div class="container">
+	<div class="header">
+		<div class="settings" *ngIf="quizzy.isMaster()">
+			<a href="#" (click)="settings($event)"><img src="assets/img/cog-solid.svg" /></a>
+		</div>
+	</div>
 	<img src="assets/logo.png" />
 	<div *ngIf="!quizzy.getState()?.buzzer">En attente du buzzer...</div>
 	<div *ngIf="quizzy.isGame()" class="wait-start">Insert coin</div>
 	<div *ngIf="quizzy.isMaster()" class="buttons">
 		<form>
-		<input type="button" class="btn btn-primary" (click)="quizzy.getMaster().startNewGame()" value="New game">
-		<button class="btn btn-primary" (click)="quizzy.getMaster().continueGame()">Continue</button>
+			<input type="button" class="btn btn-primary" (click)="quizzy.getMaster().startNewGame()" value="New game">
+			<button class="btn btn-primary" (click)="quizzy.getMaster().continueGame()">Continue</button>
 		</form>
 	</div>
 </div>

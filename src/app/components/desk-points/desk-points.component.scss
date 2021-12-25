@@ -1,0 +1,66 @@
+:host {
+	display: block;
+	height: 100%;
+}
+
+.points {
+	display: flex;
+	height: 100%;
+	flex-direction: column-reverse;
+	justify-content: space-evenly;
+
+	.point {
+		background-color: rgba(255, 255, 255, 0.2);
+		border-radius: 5px;
+		height: 15px;
+		width: 100%;
+
+		&.active {
+			background-color: rgba(255, 255, 255, 0.6);
+		}
+	}
+
+	&.team0 .active {
+		background-color: #ff0000b8;
+	}
+
+	&.team1 .active {
+		background-color: #00ff009e;
+	}
+
+	&.team2 .active {
+		background-color: #0000ffb8;
+	}
+
+	&.team3 .active {
+		background-color: #ffff009e;
+	}
+
+	.active.blink-add {
+		animation: blink-add 0.3s;
+		animation-iteration-count: 4;
+	}
+
+	.active.blink-remove {
+		animation: blink-remove 0.3s;
+		animation-iteration-count: 4;
+	}
+
+	.active.blink-finished {
+		animation: blink-remove 0.3s;
+		animation-iteration-count: 8;
+	}
+
+}
+
+@keyframes blink-add {
+	50% {
+		background-color:#fff ;
+	}
+}
+
+@keyframes blink-remove {
+	50% {
+		background-color:#000 ;
+	}
+}
